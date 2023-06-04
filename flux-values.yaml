@@ -1,0 +1,7 @@
+git:
+  url: https://github.com/mirik12/flux-gitops
+  path: clusters/my-cluster
+  branch: main
+
+manifestGeneration:
+  auto: true
