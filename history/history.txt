@@ -1,0 +1,57 @@
+ 2731  tf init
+ 2732  tf validate
+ 2733  tf plan
+ 2734  > github.repository(owner: "mirik12", name: "flux-gitops") 
+ 2735  terraform console
+ 2736  tf plan
+ 2737  export TF_VAR_GITHUB_OWNER=mirik12
+ 2738  tf plan
+ 2739  tf apply
+ 2740  kubectl get pods -n flux-system
+ 2741  gcloud container clusters get-credentials main --zone us-central1-c --project YOUR_UNIQUE_PROJ
+ 2742  k get ns
+ 2743  k get po -n flux-system
+ 2744  curl -s https://fluxcd.io/install.sh | bash
+ 2745  flux get all
+ 2746  helm search repo fluxcd/helm-operator
+ 2747  flux get helmrepositories
+ 2748  helm search repo fluxcd/helm-operator --versions
+ 2749  helm search repo fluxcd | grep helm-operator\n
+ 2750  helm repo list
+ 2751  helm repo add fluxcd https://charts.fluxcd.io
+ 2752  helm search repo fluxcd/helm-operator --versions
+ 2753  helm install fluxcd/helm-operator --version 1.4.4 --namespace flux-system\n
+ 2754  helm install fluxcd/helm-operator --version 1.4.4 --namespace flux-system --name my-helm-operator\n
+ 2755  helm install my-helm-operator fluxcd/helm-operator --version 1.4.4 --namespace flux-system
+ 2756  kubectl apply -f helmrelease.yaml
+ 2757  kubectl get deployment -n flux-system flux
+ 2758  kubectl get deployments -A | grep flux
+ 2759  flux install --values=flux-values.yaml
+ 2760  kubectl apply -f flux-helm-release.yaml
+ 2761  apiVersion: source.toolkit.fluxcd.io/v1beta1\nkind: GitRepository\nmetadata:\n  name: flux-git\n  namespace: flux-system\nspec:\n  interval: 1m\n  url: https://github.com/mirik12/flux-gitops\n  ref:\n    branch: main\n---\napiVersion: helm.toolkit.fluxcd.io/v2beta1\nkind: HelmRelease\nmetadata:\n  name: flux\n  namespace: flux-system\nspec:\n  releaseName: flux\n  chart:\n    spec:\n      chart: flux\n      version: 1.9.0\n      sourceRef:\n        kind: GitRepository\n        name: flux-git\n        namespace: flux-system\n      interval: 1m\n  values:\n    manifestGeneration:\n      auto: true\n
+ 2762  kubectl apply -f flux-helm-release.yaml
+ 2763  kubectl get all -n flux-system
+ 2764  kubectl describe pod my-helm-operator -n flux-system
+ 2765  flux install --values=flux-values.yaml
+ 2766  kubectl apply -f flux-values.yaml
+ 2767  ll
+ 2768  flux logs
+ 2769  k get ns
+ 2770  flux create helmrelease kbot --namespace=demo --source=GitRepository/kbot --chart="./helm" --interval=1m --export
+ 2771  flux create source git kbot --url=https://github.com/mirik12/kbot --branch=main namaspace=demo --export
+ 2772  k get po -n demo 
+ 2773  ll
+ 2774  kubectl apply -f GitRepository.yaml
+ 2775  flux create helmrelease kbot --namespace=demo --source=GitRepository/kbot --chart="./helm" --interval=1m --export\n
+ 2776  kubectl apply -f flux-helm-release.yaml
+ 2777  flux get sources git
+ 2778  flux get helmreleases
+ 2779  kubectl get ns flux-system
+ 2780  flux get helmreleases
+ 2781  flux logs
+ 2782  flux create source git kbot --url=https://github.com/mirik12/kbot --branch=main namaspace=demo --export
+ 2783  flux create helmrelease kbot --namespace=demo --source=GitRepository/kbot --chart="./helm" --interval=1m --export\n
+ 2784  flux logs
+ 2785  kubectl create secret generic flux-gitops-secret --from-literal=token=YOUR> --namespace=flux-system\n
+ 2786  kubectl apply -f flux-helm-release.yaml
+ 2787  tf destroy
